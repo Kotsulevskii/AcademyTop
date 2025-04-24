@@ -7,6 +7,9 @@ import ColorGenerator from './components/ColorGen'
 import ClickerGame from './components/ClickerGame'
 import UserHook from './components/UserHook'
 import DynamicForm from './components/DinamicForm'
+import SimpleFetch from './components/SimpleFetch'
+import Posts from './components/FetchPost'
+import NasaPhoto from './components/NasaPhoyo'
 
 function App() {
 
@@ -20,6 +23,9 @@ function App() {
       <ClickerGame/>
       <UserHook/>
       <DynamicForm/>
+      <SimpleFetch/>
+      <Posts/>
+      <NasaPhoto/>
     </>
   )
 }
