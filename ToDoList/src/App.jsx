@@ -10,6 +10,8 @@ import DynamicForm from './components/DinamicForm'
 import SimpleFetch from './components/SimpleFetch'
 import Posts from './components/FetchPost'
 import NasaPhoto from './components/NasaPhoyo'
+import AddPostForm from './components/AddPostForm'
+import AvatarUpload from './components/AvatarUpload'
 
 function App() {
 
@@ -26,6 +28,8 @@ function App() {
       <SimpleFetch/>
       <Posts/>
       <NasaPhoto/>
+      <AddPostForm/>
+      <AvatarUpload/>
     </>
   )
 }
