@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Гостевая книга</title>
+</head>
+<body>
+  <h1>Оставьте сообщение</h1>
+  <form method="POST" action="/submit">
+    <input type="text" name="name" placeholder="Ваше имя" required />
+    <br/>
+    <textarea name="message" placeholder="Ваше сообщение" required></textarea>
+    <br/>
+    <button type="submit">Отправить</button>
+  </form>
+  <a href="/messages">Посмотреть все сообщения</a>
+</body>
+</html>
