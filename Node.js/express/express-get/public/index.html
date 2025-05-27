@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Express Tasks</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <h1>📋 Мои задачи</h1>
+  <ul id="taskList"></ul>
+  <script>
+    fetch('/api/tasks')
+      .then(res => res.json())
+      .then(tasks => {
+        const list = document.getElementById('taskList');
+        list.innerHTML = tasks.map(t => `<li>${t}</li>`).join('');
+      });
+  </script>
+</body>
+</html>
