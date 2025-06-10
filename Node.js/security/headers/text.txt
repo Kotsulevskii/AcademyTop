@@ -1,0 +1,35 @@
+const express = require('express');
+const cors = require('cors');
+
+const app = express();
+
+// Разрешаем запросы только с доверенного домена
+const corsOptions = {
+  origin: 'https://trusted-frontend.com', 
+  credentials: true // Разрешаем передачу cookies
+};
+
+app.use(cors(corsOptions));
+
+app.get('/api/data', (req, res) => {
+  res.json({ message: 'Данные успешно получены!' });
+});
+
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`🔒 Сервер запущен с CORS-защитой на http://localhost:${PORT}`);
+});
+///////
+app.use((req, res, next) => {
+  res.setHeader(
+    'Strict-Transport-Security',
+    'max-age=31536000; includeSubDomains; preload'
+  );
+  next();
+});
+///////
+app.use((req, res, next) => {
+  res.setHeader('X-Frame-Options', 'DENY'); // или SAMEORIGIN
+  res.setHeader('Content-Security-Policy', "frame-ancestors 'self'");
+  next();
+});

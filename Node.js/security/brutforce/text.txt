@@ -1,0 +1,26 @@
+const express = require('express');
+const rateLimit = require('express-rate-limit');
+
+const app = express();
+
+// Создаем middleware для ограничения частоты запросов
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 минут
+  max: 100,                 // Максимум 100 запросов
+  message: 'Слишком много запросов, попробуйте позже',
+  statusCode: 429           // Код ответа при превышении лимита
+});
+
+// Применяем к защите всех маршрутов /api/*
+app.use('/api/', limiter);
+
+// Пример защищенного маршрута
+app.get('/api/data', (req, res) => {
+  res.json({ message: 'Данные успешно получены!' });
+});
+
+// Запуск сервера
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Сервер запущен на порту ${PORT}`);
+});
